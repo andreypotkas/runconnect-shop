@@ -1,0 +1,60 @@
+.p-card {
+  position: relative;
+  width: 18rem;
+}
+
+.card-header {
+  overflow: hidden;
+}
+
+.card-header img {
+  display: block;
+  height: 18rem;
+  width: 18rem;
+  transition: 0.3s ease-in-out;
+}
+
+.description-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.37);
+  color: #fff;
+  padding: 1rem;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.card:hover .card-header img {
+  transform: scale(1.1);
+}
+
+.card:hover .description-overlay {
+  opacity: 1;
+  height: 76%;
+}
+
+.p-card-body,
+.p-card-footer,
+.p-card-content {
+  padding: 0 !important;
+}
+
+.p-card-title,
+.p-card-subtitle {
+  padding-left: 1rem;
+  text-align: left;
+  margin: 0 !important;
+}
+
+.p-inputnumber-buttons-horizontal .p-inputnumber-input {
+  width: 2rem;
+  height: 2rem;
+}
+
+.p-inputnumber-buttons-horizontal .p-button {
+  width: 2rem !important;
+  height: 2rem !important;
+}

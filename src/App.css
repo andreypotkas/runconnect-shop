@@ -1,0 +1,33 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cart-scroll {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.cart-scroll::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  background: #f0f0f0;
+}
+@media (max-width: 520px) {
+  body {
+    font-size: 12px !important;
+  }
+}
