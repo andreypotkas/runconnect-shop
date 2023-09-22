@@ -3,12 +3,9 @@ import { Button } from 'primereact/button';
 import { Divider } from 'primereact/divider';
 import { Tag } from 'primereact/tag';
 
-import { SplitButton } from 'primereact/splitbutton';
-
 import { Grape } from '../../types/product.type';
 import { useState } from 'react';
 import { InputNumber, InputNumberValueChangeEvent } from 'primereact/inputnumber';
-import { MenuItem } from 'primereact/menuitem';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCart } from '../../redux/products/productsSlice';
 import './ProductCard.css';
@@ -23,27 +20,27 @@ export default function ProductCard({
 }) {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState<number>(1);
-  const [age, setAge] = useState<string>('2 года');
+  const age = product.type === 'виноград' ? 'Двухлетний ' : 'Трехлетний ';
 
   const { cartProducts } = useSelector((state: RootState) => state.products);
   const isInCart = cartProducts.find((item) => item.product.title === product.title);
 
-  const items: MenuItem[] = [
-    {
-      label: '1 Год',
-      command: () => setAge('1 год'),
-    },
-    {
-      label: '2 Года',
-      command: () => setAge('2 года'),
-    },
-  ];
+  // const items: MenuItem[] = [
+  //   {
+  //     label: '1 Год',
+  //     command: () => setAge('1 год'),
+  //   },
+  //   {
+  //     label: '2 Года',
+  //     command: () => setAge('2 года'),
+  //   },
+  // ];
 
   const handleAddProductToCart = () =>
     dispatch(
       addProductToCart({
         product,
-        age: age.match(/\d+/),
+        age: age,
         count: amount,
         price: product.secondPrice,
       }),
@@ -81,14 +78,19 @@ export default function ProductCard({
           showButtons
           buttonLayout="horizontal"
           step={1}
-          min={0}
+          min={1}
           incrementButtonIcon="pi pi-plus"
           decrementButtonIcon="pi pi-minus"
         />
       </div>
-      <div className="flex gap-2 align-items-center">
-        <SplitButton label={age} model={items} disabled />
+      <div className="text-sm text-left  flex flex-column">
+        <span className=" text-center">{age}</span>
+        <span className=" text-center">саженец</span>
       </div>
+
+      {/* <div className="flex gap-2 align-items-center">
+        <SplitButton label={age} model={items} disabled />
+      </div> */}
       <Button icon={'pi pi-shopping-cart'} disabled={!!isInCart} onClick={handleAddProductToCart} />
     </div>
   );
@@ -112,16 +114,29 @@ export default function ProductCard({
             <div className="font-bold text-xl p-1 white-space-nowrap">{product.secondPrice} руб.</div>
           )}
         </div>
-        <div className="description-overlay text-overflow-ellipsis overflow-hidden">
-          <div className="text-left">Название: {product.title}</div>
-          <div className="text-left">Цвет: {product.color}</div>
-          <div className="text-left">Семечка: {product.seed ? 'есть' : 'нет'}</div>
-          <div className="text-left">Созревание: {product.ripening}</div>
-          <div className="text-left">Морозостойкость: {product.frostResistance}</div>
-          <div className="text-left">В наличии: {product.inStock ? 'есть' : 'нет'}</div>
-          <Divider className="m-1" />
-          <div className="text-left text-overflow-ellipsis overflow-hidden h-7rem p-1">{product.description}</div>
-          <Button severity="success" label="Подробнее" onClick={() => handleSetCurrentProduct(product)} />
+        <div className="description-overlay text-overflow-ellipsis overflow-hidden justify-content-between flex flex-column">
+          <div>
+            <div className="text-left">Название: {product.title}</div>
+            {product.type === 'виноград' && (
+              <div>
+                <div className="text-left">Цвет: {product.color}</div>
+                <div className="text-left">Семечка: {product.seed ? 'есть' : 'нет'}</div>
+                <div className="text-left">Созревание: {product.ripening}</div>
+                <div className="text-left">Морозостойкость: {product.frostResistance}</div>
+              </div>
+            )}
+            <div className="text-left">В наличии: {product.inStock ? 'есть' : 'нет'}</div>
+            <Divider className="m-1" />
+            <div className="text-left text-overflow-ellipsis overflow-hidden p-1">
+              {product.description.slice(0, product.type === 'виноград' ? 150 : 240) + '..'}
+            </div>
+          </div>
+          <Button
+            className="flex-shrink-0"
+            severity="success"
+            label="Подробнее"
+            onClick={() => handleSetCurrentProduct(product)}
+          />
         </div>
       </Card>
     </div>

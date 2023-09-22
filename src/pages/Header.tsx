@@ -3,11 +3,6 @@ import { ChangeEvent } from 'react';
 import { Filters } from './Marketplace/Marketplace';
 import { InputText } from 'primereact/inputtext';
 
-// const yearsOptions = [
-//   { label: '1 год', value: 'oneYear' },
-//   { label: '2 года', value: 'twoYear' },
-//   { label: 'Все', value: 'all' },
-// ];
 const sortOptions = [
   { label: 'По убыванию', value: -1 },
   { label: 'По возрастанию', value: 1 },
@@ -55,18 +50,18 @@ export default function Header({ filters, handleChangeFilter, handleChangeSearch
       </span>
 
       <Dropdown
+        placeholder={'Тип саженца'}
+        value={filters.type}
+        options={typeOptions}
+        onChange={(e: DropdownChangeEvent) => handleChangeFilter('type', e)}
+      />
+
+      <Dropdown
         placeholder={'Цена'}
         value={filters.price}
         options={sortOptions}
         onChange={(e: DropdownChangeEvent) => handleChangeFilter('price', e)}
       />
-
-      {/* <Dropdown
-        placeholder={'Возраст'}
-        value={filters.age}
-        options={yearsOptions}
-        onChange={(e: DropdownChangeEvent) => handleChangeFilter('age', e)}
-      /> */}
 
       <Dropdown
         placeholder={'Созревание'}
@@ -87,13 +82,6 @@ export default function Header({ filters, handleChangeFilter, handleChangeSearch
         value={filters.seed}
         options={seedOptions}
         onChange={(e: DropdownChangeEvent) => handleChangeFilter('seed', e)}
-      />
-
-      <Dropdown
-        placeholder={'Тип'}
-        value={filters.type}
-        options={typeOptions}
-        onChange={(e: DropdownChangeEvent) => handleChangeFilter('type', e)}
       />
     </div>
   );
