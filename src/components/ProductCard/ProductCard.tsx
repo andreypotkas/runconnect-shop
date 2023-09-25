@@ -20,21 +20,10 @@ export default function ProductCard({
 }) {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState<number>(1);
-  const age = product.type === 'виноград' ? 'Двухлетний ' : 'Трехлетний ';
+  const age = 'Двухлетний ';
 
   const { cartProducts } = useSelector((state: RootState) => state.products);
   const isInCart = cartProducts.find((item) => item.product.title === product.title);
-
-  // const items: MenuItem[] = [
-  //   {
-  //     label: '1 Год',
-  //     command: () => setAge('1 год'),
-  //   },
-  //   {
-  //     label: '2 Года',
-  //     command: () => setAge('2 года'),
-  //   },
-  // ];
 
   const handleAddProductToCart = () =>
     dispatch(

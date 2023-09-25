@@ -4,10 +4,12 @@ import { RootState } from '../../redux/store';
 import { InputText } from 'primereact/inputtext';
 import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
+import { Chip } from 'primereact/chip';
 import { useState } from 'react';
 import axios from 'axios';
 import { clearCart } from '../../redux/products/productsSlice';
 import { CartProduct } from '../../types/cart.type';
+import ReactGA from 'react-ga4';
 
 type Product = {
   name: string;
@@ -35,9 +37,15 @@ export default function Cart({ show, setVisibleRight }: Props) {
   const [contact, setContact] = useState('');
   const [address, setAddress] = useState('');
 
-  const total = cartProducts.reduce((acc, a) => acc + a.price * a.count, 0);
+  const totalPrice = cartProducts.reduce((acc, a) => acc + a.price * a.count, 0);
+  const totalCount = cartProducts.reduce((acc, a) => acc + a.count, 0);
 
   const sendOrder = (body: OrderBody) => {
+    ReactGA.event({
+      category: 'User Interaction',
+      action: 'Clicked My Button',
+      label: 'Button Label',
+    });
     return axios.post('https://grapes-backend-x7er.onrender.com/send-message', body);
   };
 
@@ -55,7 +63,7 @@ export default function Cart({ show, setVisibleRight }: Props) {
           age: item.age,
         }))
       : [];
-    sendOrder({ products: responseProducts, contact, address, totalCount: cartProducts.length, totalPrice: total });
+    sendOrder({ products: responseProducts, contact, address, totalCount, totalPrice });
     dispatch(clearCart());
     setVisibleRight(false);
     show();
@@ -63,13 +71,17 @@ export default function Cart({ show, setVisibleRight }: Props) {
 
   return (
     <div className="flex flex-column gap-2 justify-content-between h-full">
-      <div className="overflow-scroll cart-scroll">
-        <div className="flex flex-column gap-2 ">
-          {cartProducts.map((item) => (
-            <CartProductCard key={Math.random()} product={item} />
-          ))}
+      {cartProducts.length ? (
+        <div className="overflow-scroll cart-scroll">
+          <div className="flex flex-column gap-2 ">
+            {cartProducts.map((item) => (
+              <CartProductCard key={Math.random()} product={item} />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <Chip label={'Вы ещё не добавили товары в корзину.'} />
+      )}
 
       <div className="flex flex-column justify-content-center gap-2 p-1" style={{ background: '#f0f0f0' }}>
         <span className="text-sm">
@@ -91,7 +103,7 @@ export default function Cart({ show, setVisibleRight }: Props) {
           }}
         />
         <Divider className="m-1" />
-        <span>Общая стоимость: {total} руб.</span>
+        <span>Общая стоимость: {totalPrice} руб.</span>
         <Button
           label="Оформить заказ"
           onClick={handleSendOrder}

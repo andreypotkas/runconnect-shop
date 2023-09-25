@@ -7,9 +7,15 @@ import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import { Toast } from 'primereact/toast';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import ReactGA from 'react-ga4';
 
 function App() {
+  useEffect(() => {
+    ReactGA.initialize('G-J38TYSRN41'); // Replace with your Measurement ID
+    ReactGA.send('pageview'); // Send a pageview event
+  }, []);
+
   const toast = useRef<Toast | null>(null);
 
   const show = () => {

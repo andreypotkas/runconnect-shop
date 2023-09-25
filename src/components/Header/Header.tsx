@@ -22,7 +22,7 @@ export default function Header({ show }: { show: () => void }) {
             </h2>
             <a style={{ textDecoration: 'none', color: 'black' }} className="font-bold" href="tel:+375445914151">
               <i className="pi pi-phone"></i>
-              <span>+375 44 591-41-51</span>
+              <span>+375 44 7164468</span>
             </a>
           </div>
         </div>
