@@ -69,7 +69,7 @@ function Product() {
         <h2>
           <Chip className="text-2xl" label="Так же может понравиться" />
         </h2>
-        <div className="flex justify-content-around">
+        <div className="flex justify-content-around flex-wrap">
           {products.slice(0, 3).map((item) => {
             return <ProductCard key={Math.random()} product={item} handleSetCurrentProduct={() => {}} />;
           })}
