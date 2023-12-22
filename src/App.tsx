@@ -19,18 +19,18 @@ function App() {
 
   const toast = useRef<Toast | null>(null);
 
-  const show = () => {
-    toast.current?.show({
-      severity: 'success',
-      summary: 'Спасибо!',
-      detail: 'Вы успешно оформили заказ! Мы с вами свяжемся в ближайшее время!',
-    });
-  };
+  // const show = () => {
+  //   toast.current?.show({
+  //     severity: 'success',
+  //     summary: 'Спасибо!',
+  //     detail: 'Вы успешно оформили заказ! Мы с вами свяжемся в ближайшее время!',
+  //   });
+  // };
   return (
     <>
       <Router>
         <Toast ref={toast} />
-        <Header show={show} />
+        <Header />
         <Routes>
           <Route path={'/'} element={<Marketplace />} />
           <Route path={'/marketplace'} element={<Marketplace />} />

@@ -6,7 +6,7 @@ import Cart from '../Cart/Cart';
 import { InputText } from 'primereact/inputtext';
 import { useNavigate } from 'react-router-dom';
 
-export default function Header({ show }: { show: () => void }) {
+export default function Header() {
   const [visibleRight, setVisibleRight] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export default function Header({ show }: { show: () => void }) {
       <div className="cart">
         <Button className="h-3rem" outlined icon={'pi pi-shopping-cart'} onClick={() => setVisibleRight(true)}></Button>
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="w-22rem">
-          <Cart show={show} setVisibleRight={setVisibleRight} />
+          <Cart />
         </Sidebar>
       </div>
     </div>

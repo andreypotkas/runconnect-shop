@@ -1,34 +1,26 @@
 import CartProductCard from '../CartProductCard/CartProductCard';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
 import { Chip } from 'primereact/chip';
-import { useState } from 'react';
-import axios from 'axios';
-import { clearCart } from '../../redux/products/productsSlice';
 
-type Product = {
-  name: string;
-  price: number;
-  count: number;
-  age: number;
-};
+// type Product = {
+//   name: string;
+//   price: number;
+//   count: number;
+//   age: number;
+// };
 
-type OrderBody = {
-  products: Product[];
-  address: string;
-  contact: string;
-  totalCount: number;
-  totalPrice: number;
-};
+// type OrderBody = {
+//   products: Product[];
+//   address: string;
+//   contact: string;
+//   totalCount: number;
+//   totalPrice: number;
+// };
 
-type Props = {
-  setVisibleRight: (val: boolean) => void;
-  show: () => void;
-};
-
-export default function Cart({ show, setVisibleRight }: Props) {
+export default function Cart() {
   // const dispatch = useDispatch();
   const { cartProducts } = useSelector((state: RootState) => state.products);
   // const [contact, setContact] = useState('');

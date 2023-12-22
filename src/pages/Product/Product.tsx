@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Galleria } from 'primereact/galleria';
 import { products } from '../../assets/data';
 import { Button } from 'primereact/button';
@@ -9,8 +9,7 @@ import { Chip } from 'primereact/chip';
 
 function Product() {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const product = products[id - 1];
+  const product = products[id ? +id - 1 : 1];
 
   const itemTemplate = (item: string) => {
     return <img src={item} alt={'image'} style={{ width: '100%' }} />;
