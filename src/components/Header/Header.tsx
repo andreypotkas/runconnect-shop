@@ -1,43 +1,33 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import logo from '../../assets/logo.png';
 import { Button } from 'primereact/button';
-import { Badge } from 'primereact/badge';
 import { Sidebar } from 'primereact/sidebar';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
 import Cart from '../Cart/Cart';
+import { InputText } from 'primereact/inputtext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header({ show }: { show: () => void }) {
-  const { cartProducts } = useSelector((state: RootState) => state.products);
   const [visibleRight, setVisibleRight] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   return (
-    <div className="flex justify-content-between align-items-center px-2">
-      <div className="flex gap-2 align-items-center">
+    <div className="flex justify-content-between align-items-center p-3 gap-2 surface-ground">
+      <div className="flex align-items-center" onClick={() => navigate('/')}>
         <img src={logo} alt="logo" width={50} height={50} />
-        <div>
-          <div className="flex align-items-left flex-column">
-            <h2 style={{ color: 'var(--primary-color)' }} className="m-0 text-left">
-              Виноградник
-            </h2>
-            <a style={{ textDecoration: 'none', color: 'black' }} className="font-bold" href="tel:+375445914151">
-              <i className="pi pi-phone"></i>
-              <span>+375 44 7164468</span>
-            </a>
-          </div>
-        </div>
+        <h2 className="m-0 text-center">RunConnect Shop</h2>
       </div>
 
+      <span className="p-input-icon-left w-full max-w-30rem">
+        <i className="pi pi-search" />
+        <InputText
+          className="w-full"
+          placeholder="Поиск по названию"
+          onInput={(e: ChangeEvent<HTMLInputElement>) => console.log(e)}
+        />
+      </span>
+
       <div className="cart">
-        <div className="flex flex-column justify-content-center align-items-center">
-          <Button
-            label={window.innerWidth > 520 ? 'Корзина' : ''}
-            icon={window.innerWidth > 520 ? '' : 'pi pi-shopping-cart'}
-            onClick={() => setVisibleRight(true)}
-          >
-            <Badge value={cartProducts.length} severity="danger"></Badge>
-          </Button>
-        </div>
+        <Button className="h-3rem" outlined icon={'pi pi-shopping-cart'} onClick={() => setVisibleRight(true)}></Button>
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="w-22rem">
           <Cart show={show} setVisibleRight={setVisibleRight} />
         </Sidebar>

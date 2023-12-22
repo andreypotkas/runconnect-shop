@@ -2,18 +2,19 @@ import './App.css';
 import Header from './components/Header/Header';
 import Marketplace from './pages/Marketplace/Marketplace';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import 'primereact/resources/themes/saga-green/theme.css';
+import 'primereact/resources/themes/viva-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import { Toast } from 'primereact/toast';
 import { useEffect, useRef } from 'react';
 import ReactGA from 'react-ga4';
+import MemoizedProduct from './pages/Product/Product';
 
 function App() {
   useEffect(() => {
-    ReactGA.initialize('G-J38TYSRN41'); // Replace with your Measurement ID
-    ReactGA.send('pageview'); // Send a pageview event
+    ReactGA.initialize('G-J38TYSRN41');
+    ReactGA.send('pageview');
   }, []);
 
   const toast = useRef<Toast | null>(null);
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Marketplace />} />
           <Route path={'/marketplace'} element={<Marketplace />} />
+          <Route path={'/product/:id'} element={<MemoizedProduct />} />
           <Route path={'*'} element={<Navigate to="/" />} />
         </Routes>
       </Router>

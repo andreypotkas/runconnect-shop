@@ -1,0 +1,37 @@
+#marketplace-menu .p-menu {
+  width: 16rem !important;
+}
+
+.p-dataview .p-paginator-bottom {
+  background: var(--surface-ground) !important;
+}
+
+.marketplace-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.marketplace-menu-mob {
+  display: none !important;
+}
+
+@media (max-width: 920px) {
+  #marketplace-menu {
+    display: none;
+  }
+
+  .marketplace-container {
+    flex-direction: column;
+  }
+
+  .marketplace-menu-mob {
+    display: flex !important;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .p-menu {
+    width: 100% !important;
+  }
+}

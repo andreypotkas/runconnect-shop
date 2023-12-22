@@ -1,25 +1,31 @@
-// src/slices/counterSlice.ts
 import { createSlice } from '@reduxjs/toolkit';
-import { Grape } from '../../types/product.type';
 import { ProductsState } from '../../types/state.type';
-import data from '../../assets/data.json';
-import { CartProduct } from '../../types/cart.type';
+import { products } from '../../assets/data';
 
 const initialState: ProductsState = {
-  products: data.data as Grape[],
-  cartProducts: [] as CartProduct[],
-  likedProducts: [] as CartProduct[],
+  products: products,
+  cartProducts: [],
+  favoriteProducts: JSON.parse(localStorage.getItem('favoriteProducts')!) ?? [],
 };
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    addToFavorite: (state, action) => {
+      state.favoriteProducts.push(action.payload);
+      localStorage.setItem('favoriteProducts', JSON.stringify(state.favoriteProducts));
+      console.log(state.favoriteProducts);
+    },
+    removeFromFavorite: (state, action) => {
+      state.favoriteProducts = state.favoriteProducts.filter((item) => item.id !== action.payload.id);
+      localStorage.setItem('favoriteProducts', JSON.stringify(state.favoriteProducts));
+    },
     addProductToCart: (state, action) => {
       state.cartProducts.push(action.payload);
     },
     removeProductFromCart: (state, action) => {
-      state.cartProducts = state.cartProducts.filter((item) => item.product.img !== action.payload.product.img);
+      state.cartProducts = state.cartProducts.filter((item) => item.images !== action.payload.product.images[0]);
     },
     clearCart: (state) => {
       state.cartProducts = [];
@@ -27,5 +33,6 @@ const productsSlice = createSlice({
   },
 });
 
-export const { addProductToCart, removeProductFromCart, clearCart } = productsSlice.actions;
+export const { addProductToCart, removeProductFromCart, removeFromFavorite, clearCart, addToFavorite } =
+  productsSlice.actions;
 export default productsSlice.reducer;
