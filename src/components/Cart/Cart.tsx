@@ -67,7 +67,7 @@ export default function Cart() {
         <Chip label={'Вы ещё не добавили товары в корзину.'} />
       )}
 
-      <div className="flex flex-column justify-content-center gap-2 p-1" style={{ background: '#f0f0f0' }}>
+      <div className="flex flex-column justify-content-center gap-2 p-1">
         {/* <span className="text-sm">
           После оформления заказа, мы свяжемся с вами для подтверждения заказа. Пожалуйста, укажите свой e-mail или
           телефон для связи, а также адрес доставки.
