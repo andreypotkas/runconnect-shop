@@ -22,7 +22,7 @@ export default function ProductCard({
   const renderNameAndPrice = (): string => {
     const label = (
       <div className="flex gap-2 align-items-center">
-        <span className="white-space-nowrap overflow-hidden text-overflow-ellipsis max-w-15rem">{product.title}</span>
+        <span className="white-space-nowrap overflow-hidden text-overflow-ellipsis max-w-13rem">{product.title}</span>
         <Chip style={{ background: 'var(--primary-color)', color: 'white' }} label={product.price + ' р.'} />
       </div>
     ) as unknown;

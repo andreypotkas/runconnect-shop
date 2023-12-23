@@ -12,8 +12,8 @@ export default function Header() {
 
   return (
     <div className="flex justify-content-between align-items-center p-3 gap-2 surface-ground">
-      <div className="flex align-items-center" onClick={() => navigate('/')}>
-        <img src={logo} alt="logo" width={50} height={50} />
+      <div className="flex align-items-center gap-2" onClick={() => navigate('/')}>
+        <img src={logo} alt="logo" width={40} height={40} />
         <h2 className="m-0 text-center">RunConnect Shop</h2>
       </div>
 

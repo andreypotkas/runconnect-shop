@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Marketplace from './pages/Marketplace/Marketplace';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import 'primereact/resources/themes/viva-light/theme.css';
+import 'primereact/resources/themes/viva-dark/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';

@@ -5,7 +5,7 @@ import { products } from '../../assets/data';
 import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { Chip } from 'primereact/chip';
+import './Product.scss';
 
 function Product() {
   const { id } = useParams();
@@ -23,7 +23,14 @@ function Product() {
     <div className="p-2 flex flex-column gap-2">
       <div className="flex gap-2 flex-wrap">
         <div className="surface-card p-2 flex-grow-1" style={{ flex: '1 0 48%' }}>
-          <Galleria value={product.images} numVisible={5} item={itemTemplate} thumbnail={thumbnailTemplate} />
+          <Galleria
+            value={product.images}
+            showItemNavigators
+            circular
+            numVisible={5}
+            item={itemTemplate}
+            thumbnail={thumbnailTemplate}
+          />
         </div>
         <div className="surface-card p-2 gap-3 flex flex-column" style={{ flex: '1 0 50%' }}>
           <div className="text-3xl font-bold">{product.title}</div>
@@ -44,16 +51,16 @@ function Product() {
             <div className="flex align-items-center gap-2">
               <div className="font-bold">Количество</div>
 
-              <div className="card flex ">
+              <span className="input-number-wrapper">
                 <InputNumber
                   value={0}
                   showButtons
                   buttonLayout="horizontal"
-                  style={{ width: '9rem' }}
+                  style={{ width: '9rem', maxWidth: '9rem' }}
                   incrementButtonIcon="pi pi-plus"
                   decrementButtonIcon="pi pi-minus"
                 />
-              </div>
+              </span>
             </div>
             <div className="flex gap-2">
               <Button className="flex-grow-1" label="Добавить в корзину" icon={'pi pi-shopping-cart '} />
@@ -67,7 +74,7 @@ function Product() {
 
       <div className="card surface-card flex gap-3 flex-column p-2">
         <h2>
-          <Chip className="text-2xl" label="Так же может понравиться" />
+          <p className="text-2xl">Похожие товары</p>
         </h2>
         <div className="flex justify-content-around flex-wrap">
           {products.slice(0, 3).map((item) => {
