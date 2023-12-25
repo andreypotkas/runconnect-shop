@@ -1,22 +1,19 @@
 .p-card {
   position: relative;
-  width: 24rem;
-  height: 24rem;
   overflow: hidden;
   border: 2px solid var(--surface-border) !important;
+  padding: 2rem 0;
 
   .image-container {
     padding-top: 3rem;
-    width: 24rem;
-    height: 20rem;
     overflow: hidden;
   }
 
   img {
     display: block;
-    height: 17rem;
-    width: 24rem;
     transition: 0.25s ease-in-out;
+    width: 100%;
+    min-height: 18rem;
   }
 }
 

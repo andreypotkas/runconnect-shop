@@ -25,7 +25,7 @@ const productsSlice = createSlice({
       state.cartProducts.push(action.payload);
     },
     removeProductFromCart: (state, action) => {
-      state.cartProducts = state.cartProducts.filter((item) => item.images !== action.payload.product.images[0]);
+      state.cartProducts = state.cartProducts.filter((item) => item.product.id !== action.payload.id);
     },
     clearCart: (state) => {
       state.cartProducts = [];

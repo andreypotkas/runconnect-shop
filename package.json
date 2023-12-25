@@ -7,10 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cdk:bs": "npx cdk bootstrap",
+    "deploy": "npm run build && npx cdk deploy",
+    "cdk:destroy": "npx cdk destroy"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "^20.10.5",
     "axios": "^1.5.0",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",

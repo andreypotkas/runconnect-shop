@@ -10,6 +10,7 @@ import { Toast } from 'primereact/toast';
 import { useEffect, useRef } from 'react';
 import ReactGA from 'react-ga4';
 import MemoizedProduct from './pages/Product/Product';
+import MemoizedQuestion from './components/Question/Question';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
   //     detail: 'Вы успешно оформили заказ! Мы с вами свяжемся в ближайшее время!',
   //   });
   // };
+
   return (
     <>
       <Router>
@@ -38,6 +40,7 @@ function App() {
           <Route path={'*'} element={<Navigate to="/" />} />
         </Routes>
       </Router>
+      <MemoizedQuestion />
     </>
   );
 }

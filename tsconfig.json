@@ -13,12 +13,23 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
+    "esModuleInterop": true,
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*", "./dist/*", ""],
+      "@/pages/*": ["src/pages/*"],
+      "@/assets/*": ["src/assets/*"],
+      "@/themes/*": ["src/themes/*"],
+      "@components/*": ["src/components/*"],
+      "@types/*": ["src/@types/*"],
+      "@public/*": ["public/*"],
+      "@constants/*": ["src/constants/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

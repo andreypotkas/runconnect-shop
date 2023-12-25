@@ -46,10 +46,11 @@ export default function Marketplace() {
     <div>
       <div className="marketplace-container">
         <MemoizedMarketplaceMenu setSortField={setSortField} setSortOrder={setSortOrder} setFilters={setFilters} />
+        {/* <Divider className="hidden lg:block" layout="vertical" /> */}
         <DataView
           sortField={sortField}
           sortOrder={sortOrder}
-          className="w-full"
+          className="w-full grid grid-nogutter"
           rows={12}
           emptyMessage={renderEmptyMessage() as string}
           value={filteredProducts}

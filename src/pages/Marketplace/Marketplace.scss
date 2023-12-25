@@ -9,24 +9,30 @@
 .marketplace-container {
   display: flex;
   flex-direction: row;
+  padding: 1rem;
+  gap: 0.5rem;
 }
 
 .marketplace-menu-mob {
   display: none !important;
 }
 
-@media (max-width: 920px) {
+.grid {
+  gap: 0;
+}
+
+@media (max-width: 992px) {
   #marketplace-menu {
     display: none;
   }
 
   .marketplace-container {
     flex-direction: column;
+    padding: 0.5rem 0rem;
   }
 
   .marketplace-menu-mob {
     display: flex !important;
-    padding: 1rem;
     gap: 1rem;
     align-items: center;
   }

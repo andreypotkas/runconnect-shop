@@ -1,99 +1,122 @@
 import CartProductCard from '../CartProductCard/CartProductCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
 import { Chip } from 'primereact/chip';
+import { Dropdown } from 'primereact/dropdown';
+import { useState } from 'react';
+import { InputText } from 'primereact/inputtext';
+import axios from 'axios';
+import { CartProduct } from '../../types/cart.type';
+import { clearCart } from '../../redux/products/productsSlice';
 
-// type Product = {
-//   name: string;
-//   price: number;
-//   count: number;
-//   age: number;
-// };
+type ResponseProduct = {
+  name: string;
+  price: string;
+  count: string;
+  size: string;
+};
 
-// type OrderBody = {
-//   products: Product[];
-//   address: string;
-//   contact: string;
-//   totalCount: number;
-//   totalPrice: number;
-// };
+type OrderBody = {
+  products: ResponseProduct[];
+  contactType: string;
+  contact: string;
+};
 
 export default function Cart() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { cartProducts } = useSelector((state: RootState) => state.products);
-  // const [contact, setContact] = useState('');
-  // const [address, setAddress] = useState('');
+  const [contactType, setContactType] = useState<string | null>(null);
+  const [contact, setContact] = useState<string>('');
+  const [isOrdered, setIsOrdered] = useState(false);
 
-  // const totalPrice = cartProducts.reduce((acc, a) => acc + a.price * a.count, 0);
-  // const totalCount = cartProducts.reduce((acc, a) => acc + a.count, 0);
+  const wayToContactTemplate = (option: { name: string; code: string }) => {
+    if (option) {
+      return (
+        <div className="flex align-items-center gap-2">
+          <i className={'pi ' + option.code}></i>
 
-  // const sendOrder = (body: OrderBody) => {
-  //   return axios.post('https://grapes-backend-x7er.onrender.com/send-message', body);
-  // };
+          <div>{option.name}</div>
+        </div>
+      );
+    }
 
-  // const handleSendOrder = () => {
-  //   const responseProducts = cartProducts
-  //     ? cartProducts.map((item: Product) => ({
-  //         name:
-  //           (item.product.type ? item.product.type : '') +
-  //           ' ' +
-  //           item.product.title +
-  //           ' ' +
-  //           (item.product.color ? item.product.color : ''),
-  //         price: item.price,
-  //         count: item.count,
-  //         age: item.age,
-  //       }))
-  //     : [];
-  //   sendOrder({ products: responseProducts, contact, address, totalCount, totalPrice });
-  //   dispatch(clearCart());
-  //   setVisibleRight(false);
-  //   show();
-  // };
+    return <span>{'Выберите способ для связи'}</span>;
+  };
+
+  const contactTypes = [
+    { name: 'Email', code: 'pi pi-envelope' },
+    { name: 'Telegram', code: 'pi pi-telegram' },
+    { name: 'Instagram', code: 'pi-instagram' },
+  ];
+
+  const sendOrder = (body: OrderBody) => {
+    return axios.post('http://54.155.135.247:4000/api/v1/shop/send-message', body);
+  };
+
+  const handleCheckout = () => {
+    const responseProducts = cartProducts
+      ? cartProducts.map((item: CartProduct) => ({
+          name: item.product.title,
+          price: `${item.product.price}`,
+          count: `${item.count}`,
+          size: item.size,
+        }))
+      : [];
+    setIsOrdered(true);
+    sendOrder({ products: responseProducts, contact, contactType: contactType! });
+    dispatch(clearCart());
+    // setVisibleRight(false);
+    // show();
+  };
 
   return (
-    <div className="flex flex-column gap-2 justify-content-between h-full">
-      {cartProducts.length ? (
-        <div className="overflow-scroll cart-scroll">
-          <div className="flex flex-column gap-2 ">
-            {cartProducts.map((item) => (
-              <CartProductCard key={Math.random()} product={item} />
-            ))}
+    <div className="flex flex-column flex-grow-1 justify-content-between h-full">
+      <div>
+        {cartProducts.length ? (
+          <div className="overflow-scroll cart-scroll">
+            <div className="flex flex-column gap-2 ">
+              {cartProducts.map((item) => (
+                <CartProductCard key={Math.random()} product={item} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <Chip label={'Вы ещё не добавили товары в корзину.'} />
+        )}
+      </div>
+
+      {isOrdered ? (
+        <div className=" surface-ground p-2 border-radius flex gap-2 align-items-center">
+          <i className="pi pi-check-circle" style={{ fontSize: '4rem', color: 'green' }}></i>
+          <div className="text-center">
+            <div className="text-3xl text-center">Спасибо за заказ!</div>
+
+            <div> Мы скоро с вами свяжемся.</div>
           </div>
         </div>
       ) : (
-        <Chip label={'Вы ещё не добавили товары в корзину.'} />
+        <div className="flex flex-column gap-2 surface-ground border-round p-2">
+          <div className="text-center"> Выберите и введите контакт для связи</div>
+          <Dropdown
+            value={contactType}
+            onChange={(e) => setContactType(e.value)}
+            options={contactTypes}
+            optionLabel="name"
+            optionValue="name"
+            valueTemplate={wayToContactTemplate}
+            itemTemplate={wayToContactTemplate}
+            className="w-full"
+            placeholder="Выберите способ для связи"
+          />
+          <InputText value={contact} onChange={(e) => setContact(e.target.value)} />
+          <Button
+            label="Оформить заказ"
+            onClick={handleCheckout}
+            disabled={cartProducts.length === 0 || !contactType || contact.length < 3}
+          />
+        </div>
       )}
-
-      <div className="flex flex-column justify-content-center gap-2 p-1">
-        {/* <span className="text-sm">
-          После оформления заказа, мы свяжемся с вами для подтверждения заказа. Пожалуйста, укажите свой e-mail или
-          телефон для связи, а также адрес доставки.
-        </span> */}
-        {/* <InputText
-          placeholder="Email или телефон"
-          value={contact}
-          onChange={(e) => {
-            setContact(e.target.value);
-          }}
-        />
-        <InputText
-          placeholder="Адрес доставки"
-          value={address}
-          onChange={(e) => {
-            setAddress(e.target.value);
-          }}
-        /> */}
-        <Divider className="m-1" />
-        {/* <span>Общая стоимость: {totalPrice} руб.</span> */}
-        <Button
-          label="Перейти к оформлению"
-          // onClick={handleSendOrder}
-          // disabled={contact.length < 6 || cartProducts.length === 0}
-        />
-      </div>
     </div>
   );
 }

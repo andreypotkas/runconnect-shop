@@ -11,10 +11,13 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-content-between align-items-center p-3 gap-2 surface-ground">
-      <div className="flex align-items-center gap-2" onClick={() => navigate('/')}>
-        <img src={logo} alt="logo" width={40} height={40} />
-        <h2 className="m-0 text-center">RunConnect Shop</h2>
+    <div className="flex justify-content-between align-items-center p-2 gap-2 surface-card">
+      <div
+        className="flex align-items-center gap-2 cursor-pointer border-round	hover:surface-card"
+        onClick={() => navigate('/')}
+      >
+        <img src={logo} alt="logo" style={{ width: '3rem', height: '3rem' }} />
+        <h2 className="m-0 text-center hidden md:block flex-shrink-0">RunConnect Shop</h2>
       </div>
 
       <span className="p-input-icon-left w-full max-w-30rem">
@@ -28,7 +31,18 @@ export default function Header() {
 
       <div className="cart">
         <Button className="h-3rem" outlined icon={'pi pi-shopping-cart'} onClick={() => setVisibleRight(true)}></Button>
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="w-22rem">
+        <Sidebar
+          icons={
+            <div className="w-full text-left font-bold text-x flex align-items-center gap-2">
+              <i className="pi pi-shopping-cart text-xl"></i>
+              <span>Корзина</span>
+            </div>
+          }
+          visible={visibleRight}
+          position="right"
+          onHide={() => setVisibleRight(false)}
+          className="w-24rem"
+        >
           <Cart />
         </Sidebar>
       </div>

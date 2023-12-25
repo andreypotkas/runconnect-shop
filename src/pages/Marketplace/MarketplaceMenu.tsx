@@ -75,9 +75,8 @@ function MarketplaceMenu({ setFilters, setSortField, setSortOrder }: Props) {
         />
         <Menu model={items} className="surface-ground border-none" />
       </div>
-      <div className="marketplace-menu-mob">
+      <div className="marketplace-menu-mob px-2">
         <Button icon="pi pi-bars" onClick={() => setVisible(true)} />
-        <span className="text-2xl">Каталог товаров</span>
       </div>
       <Sidebar visible={visible} onHide={() => setVisible(false)}>
         <div className="w-full">
