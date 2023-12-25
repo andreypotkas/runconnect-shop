@@ -96,6 +96,7 @@ function Product() {
                 </span>
               </div>
             </div>
+            <Divider />
 
             <div className="flex gap-2">
               {isInCart ? (
@@ -127,7 +128,7 @@ function Product() {
 
       <div className="card surface-card flex gap-3 flex-column p-2">
         <h2>Похожие товары</h2>
-        <div className="flex justify-content-around flex-wrap gap-2">
+        <div className="grid">
           {products.slice(0, 3).map((item) => {
             return <ProductCard key={Math.random()} product={item} handleSetCurrentProduct={() => {}} />;
           })}

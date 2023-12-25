@@ -95,7 +95,7 @@ function Question() {
               value={questionMessage}
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setQuestionMessage(e.target.value)}
               rows={5}
-              cols={30}
+              cols={10}
             />
 
             <div className="text-center"> Выберите и введите контакт для связи</div>
@@ -107,7 +107,6 @@ function Question() {
               optionValue="name"
               valueTemplate={contactTemplate}
               itemTemplate={contactTemplate}
-              className="w-full"
               placeholder="Выберите способ для связи"
             />
             <InputText value={contact} onChange={(e) => setContact(e.target.value)} />
