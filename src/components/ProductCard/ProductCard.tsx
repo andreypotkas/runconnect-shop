@@ -5,12 +5,7 @@ import './ProductCard.scss';
 
 import { useNavigate } from 'react-router-dom';
 
-export default function ProductCard({
-  product,
-}: {
-  product: Product;
-  handleSetCurrentProduct: (val: Product) => void;
-}) {
+export default function ProductCard({ product }: { product: Product }) {
   const navigate = useNavigate();
 
   const renderNameAndPrice = (): string => {

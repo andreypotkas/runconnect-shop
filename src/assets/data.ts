@@ -101,6 +101,38 @@ export const products: Product[] = [
      • Лёгкая и упругая амортизация с EVA
      • Защита от пробития с Rockshield
      • 16 стальных шипов BUGrip для уверенного сцепления на любой поверхности.`,
-    cardColor: 'white',
+    cardColor: 'black',
+  },
+  {
+    id: 5,
+    title: 'Icebug Route',
+    color: null,
+    sizes: ['43', '44'],
+    price: 350,
+    images: [
+      'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_1.jpg',
+      'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_2.jpg',
+      'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_3.jpg',
+      'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_4.jpg',
+      'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_5.jpg',
+      'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_6.jpg',
+    ],
+    description: `Удобные и устойчивые кроссовки для зимнего бега с 19 стальными шипами на внешней подошве. Хорошо амортизирующая межподошва для комфортного бега. Перепад высоты: 12 мм.Icebug BUGrip Route — это универсальная обувь, идеально подходящая как для начинающих, так и для опытных бегунов, для коротких и длинных пробежек. Верхняя часть покрыта дышащим материалом, обеспечивающим хороший комфорт и вентиляцию. Передняя часть стопы широкая, поэтому пальцы ног не подвергаются давлению. Межподошва имеет мягкую и удобную амортизацию, что позволяет легко бегать в зимних условиях. Технология BUGrip в подошве обеспечивает очень хорошее сцепление и позволяет бегать. с мощными шагами даже по снегу и льду.
+    – Верх: текстиль, изготовленный из 100 % переработанного полиэстера.
+    - Подошва: ЭВА. 20% Bloom Foam, стабилизатор ESS
+    – Стелька: Ortholite Hybrid®- Подошва: BUGrip®, переработанная резина, 20% переработанной резины. Другие детали:
+    – одобрено bluesign®: да
+    Падение: 12 мм
+    Стабильность: Стабильная
+    Субстрат: Гибрид
+    Демпфирование: 2 звезды
+    Пользователь: Сэр
+    Водонепроницаемый/водостойкий: Нет
+    Подошва: пена Bloom, легкий этиленвинилацетат со стабилизатором ESS.
+    Подошва: резина с твердосплавными шипами BUGrip® 19 на кончиках.
+    Шипы: Да
+    Верх:Текстиль
+    Вес: 280 г`,
+    cardColor: 'black',
   },
 ];

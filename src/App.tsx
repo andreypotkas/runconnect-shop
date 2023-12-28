@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Header from './components/Header/Header';
 import Marketplace from './pages/Marketplace/Marketplace';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';

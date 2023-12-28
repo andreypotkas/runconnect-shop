@@ -5,7 +5,12 @@ import { products } from '../../assets/data';
 import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { addProductToCart, addToFavorite, removeProductFromCart } from '../../redux/products/productsSlice';
+import {
+  addProductToCart,
+  addToFavorite,
+  removeFromFavorite,
+  removeProductFromCart,
+} from '../../redux/products/productsSlice';
 import './Product.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
@@ -37,6 +42,14 @@ function Product() {
 
   const handleRemoveProductToCart = () => {
     dispatch(removeProductFromCart(product));
+  };
+
+  const handleAddProductToFavorite = () => {
+    dispatch(addToFavorite(product));
+  };
+
+  const handleRemoveProductFromFavorite = () => {
+    dispatch(removeFromFavorite(product));
   };
 
   return (
@@ -116,7 +129,11 @@ function Product() {
                 />
               )}
 
-              <Button icon={'pi pi-heart'} outlined={!isFavorite} onClick={() => addToFavorite(product)} />
+              <Button
+                icon={'pi pi-heart'}
+                outlined={!isFavorite}
+                onClick={isFavorite ? handleRemoveProductFromFavorite : handleAddProductToFavorite}
+              />
             </div>
           </div>
         </div>
@@ -130,7 +147,7 @@ function Product() {
         <h2>Похожие товары</h2>
         <div className="grid">
           {products.slice(0, 3).map((item) => {
-            return <ProductCard key={Math.random()} product={item} handleSetCurrentProduct={() => {}} />;
+            return <ProductCard key={Math.random()} product={item} />;
           })}
         </div>
       </div>

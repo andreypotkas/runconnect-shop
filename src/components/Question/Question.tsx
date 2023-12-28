@@ -5,6 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import React, { useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import axios from 'axios';
+import './Question.scss';
 
 export type QuestionBody = {
   questionMessage: string;
@@ -64,9 +65,9 @@ function Question() {
     />
   );
   return (
-    <div>
+    <div id="ask-question">
       <Button
-        className="fixed "
+        className="fixed"
         style={{ bottom: '1rem', right: '1rem' }}
         icon="pi pi-question-circle"
         rounded
