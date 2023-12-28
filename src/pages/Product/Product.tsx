@@ -53,9 +53,9 @@ function Product() {
   };
 
   return (
-    <div className="p-2 flex flex-column gap-2">
+    <div className="p-2 flex flex-column gap-2" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       <div className="flex gap-2 flex-wrap">
-        <div className="surface-card p-2 flex-grow-1" style={{ flex: '1 0 48%' }}>
+        <div className="surface-card p-2 flex-grow-1 border-round" style={{ flex: '1 0 48%' }}>
           <Galleria
             value={product.images}
             showItemNavigators
@@ -65,11 +65,14 @@ function Product() {
             thumbnail={thumbnailTemplate}
           />
         </div>
-        <div className="surface-card p-2 gap-3 flex flex-column" style={{ flex: '1 0 50%' }}>
+        <div className="surface-card p-2 gap-3 flex flex-column border-round" style={{ flex: '1 0 50%' }}>
           <div className="border-round surface-ground p-3 h-full flex flex-grow-1 flex-column">
             <div className="text-2xl font-bold">{product.title}</div>
 
-            <div className="text-6xl">{product.price} р.</div>
+            <div className="text-6xl">
+              {' '}
+              {new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' }).format(product.price)}
+            </div>
             <Divider />
 
             <div className="flex flex-column gap-3 mb-3">
@@ -143,7 +146,7 @@ function Product() {
         </div>
       </div>
 
-      <div className="card surface-card flex gap-3 flex-column p-2">
+      <div className="card surface-card flex gap-3 flex-column p-2 border-round">
         <h2>Похожие товары</h2>
         <div className="grid">
           {products.slice(0, 3).map((item) => {

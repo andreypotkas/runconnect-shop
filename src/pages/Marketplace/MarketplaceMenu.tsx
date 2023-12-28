@@ -71,7 +71,7 @@ function MarketplaceMenu({ setFilters, setSortField, setSortOrder }: Props) {
           optionLabel="label"
           placeholder="Сортировка по цене"
           onChange={onSortChange}
-          className="w-full m-1"
+          className="w-16rem"
         />
         <Menu model={items} className="surface-ground border-none" />
       </div>

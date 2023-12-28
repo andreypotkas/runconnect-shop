@@ -11,7 +11,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-content-between align-items-center p-2 gap-2 surface-card">
+    <div className="flex justify-content-between align-items-center py-4 px-2 gap-2">
       <div
         className="flex align-items-center gap-2 cursor-pointer border-round	hover:surface-card"
         onClick={() => navigate('/')}

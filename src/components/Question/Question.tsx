@@ -75,8 +75,8 @@ function Question() {
         onClick={() => setVisible(true)}
       />
       <Dialog
-        header="Форма отправки вопроса"
-        className="m-2"
+        header="Задать вопрос"
+        className="m-1"
         visible={visible}
         onHide={() => setVisible(false)}
         footer={footerContent}

@@ -6,7 +6,7 @@ export const products: Product[] = [
     title: 'Icebug NewRun BUGrip G-TX',
     color: 'black',
     sizes: ['40', '41', '42', '43', '44'],
-    price: 250,
+    price: 13999,
     images: [
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugNewRunBUGrip_G-TX_1.jpg',
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugNewRunBUGrip_G-TX_2.jpg',
@@ -34,7 +34,7 @@ export const products: Product[] = [
     title: 'Icebug NewRun BUGrip Winter Running',
     color: null,
     sizes: ['41', '44'],
-    price: 300,
+    price: 13999,
     images: [
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugNewRunBUGripWinterRunning_1.jpg',
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugNewRunBUGripWinterRunning_2.jpg',
@@ -62,7 +62,7 @@ export const products: Product[] = [
     title: 'Icebug Arcus BUGrip G-TX',
     color: null,
     sizes: ['43', '44'],
-    price: 280,
+    price: 13999,
     images: [
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugArcusBUGripG-TX_1.jpg',
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugArcusBUGripG-TX_2.jpg',
@@ -82,7 +82,7 @@ export const products: Product[] = [
     title: 'Icebug Oribi5 BUGrip',
     color: null,
     sizes: ['43', '44'],
-    price: 350,
+    price: 11000,
     images: [
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugOribi5BUGrip_1.jpg',
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugOribi5BUGrip_2.jpg',
@@ -108,7 +108,7 @@ export const products: Product[] = [
     title: 'Icebug Route',
     color: null,
     sizes: ['43', '44'],
-    price: 350,
+    price: 11000,
     images: [
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_1.jpg',
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_2.jpg',
@@ -118,7 +118,7 @@ export const products: Product[] = [
       'https://run-connect-bucker.s3.eu-west-1.amazonaws.com/runconnect-shop/IcebugRoute_6.jpg',
     ],
     description: `Удобные и устойчивые кроссовки для зимнего бега с 19 стальными шипами на внешней подошве. Хорошо амортизирующая межподошва для комфортного бега. Перепад высоты: 12 мм.Icebug BUGrip Route — это универсальная обувь, идеально подходящая как для начинающих, так и для опытных бегунов, для коротких и длинных пробежек. Верхняя часть покрыта дышащим материалом, обеспечивающим хороший комфорт и вентиляцию. Передняя часть стопы широкая, поэтому пальцы ног не подвергаются давлению. Межподошва имеет мягкую и удобную амортизацию, что позволяет легко бегать в зимних условиях. Технология BUGrip в подошве обеспечивает очень хорошее сцепление и позволяет бегать. с мощными шагами даже по снегу и льду.
-    – Верх: текстиль, изготовленный из 100 % переработанного полиэстера.
+    – Верх: текстиль, изготовленный из 100% переработанного полиэстера.
     - Подошва: ЭВА. 20% Bloom Foam, стабилизатор ESS
     – Стелька: Ortholite Hybrid®- Подошва: BUGrip®, переработанная резина, 20% переработанной резины. Другие детали:
     – одобрено bluesign®: да
